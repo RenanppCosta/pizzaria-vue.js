@@ -33,7 +33,7 @@ export default {
 
     #nav a{
         text-decoration: none;
-        
+        color:#ffed00;
         font-size: 1.4rem;
         margin: 1rem;
         transition: 0.3s ease-in-out;
@@ -42,4 +42,11 @@ export default {
     #nav a:hover{
         color: #fffff0;
     }
+
+    @media(max-width:460px){
+        #nav a{
+            font-size: 1rem;
+        }
+    }
+    
 </style>
