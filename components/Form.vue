@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Mensagem</p>
+        <Message :msg="msg" v-show="msg"/>
         <div id="container_form">
             <form @submit="orderPlaced">
 
@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import Message from "./Message.vue"
+
 export default {
     name:"Form",
     data(){
@@ -84,7 +86,9 @@ export default {
             });
 
             const res = await req.json();
-            console.log(res);
+            
+            this.msg = `${res.name} seu pedido foi realizado com sucesso!`;
+            setTimeout(() => this.msg = "", 5000);
 
             this.sabor = "";
             this.tamanho = "";
@@ -95,12 +99,16 @@ export default {
     mounted(){
         this.getTamanhos(),
         this.getSabores()
+    },
+    components:{
+        Message
     }
 }
 </script>
 
 <style scoped>
     form{
+        margin-top: 1rem;
         display: flex;
         flex-direction: column;
     }
