@@ -20,9 +20,9 @@
                     <td>{{pizza.observacao}}</td>
                     <td class="status">
                         <select name="status" class="status-order">
-                            <option value="">Status do pedido</option>
+                            <option v-for="sts in status"  value="sts.tipo" :key="sts.id" :selected="pizza.status == sts.tipo">{{sts.tipo}}</option>
                         </select>
-                        <button>Cancelar</button>
+                        <button @click="deletePizza(pizza.id)">Cancelar</button>
                     </td>
                 </tr>
             </tbody>
@@ -48,7 +48,23 @@ export default {
 
             this.pizzas = data;
 
-            console.log(data)
+            this.getStatus();
+        },
+        async getStatus(){
+            const req = await fetch("http://localhost:3000/status");
+
+            const data = await req.json();
+
+            this.status = data;
+        },
+        async deletePizza(id){
+            const req = await fetch(`http://localhost:3000/pizzas/${id}`, {
+                method: "DELETE"
+            })
+
+            const res = await req.json();
+
+            this.getPedidos();
         }
     },
     mounted(){
@@ -61,6 +77,7 @@ export default {
     table{
         text-align: left;
         border-spacing: 0;
+        margin-top: 2rem;
     }
 
     th, td{

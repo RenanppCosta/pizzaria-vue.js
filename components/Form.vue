@@ -1,9 +1,8 @@
 <template>
+    <Message :msg="msg" v-show="msg"/>
     <div>
-        <Message :msg="msg" v-show="msg"/>
         <div id="container_form">
             <form @submit="orderPlaced">
-
                 <div class="container_input">
                     <label for="name">Nome do Cliente</label>
                     <input type="text" id="name" name="name" v-model="name" placeholder="Digite seu Nome">
