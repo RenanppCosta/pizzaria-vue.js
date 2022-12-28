@@ -1,8 +1,8 @@
 <template>
-    <Banner/>
+    <Banner />
     <div class="main_container">
         <h1>Escolha sua Pizza:</h1>
-        <Form/>
+        <Form />
     </div>
 </template>
 

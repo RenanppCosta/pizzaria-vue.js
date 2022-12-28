@@ -80,19 +80,11 @@
   ],
   "pizzas": [
     {
-      "name": "Renan Costa",
-      "tamanho": "Maracanã",
-      "sabor": "Carne Seca",
-      "observacao": "sem cebola",
-      "status": "Solicitado",
-      "id": 1
-    },
-    {
       "name": "Leticia",
       "tamanho": "Brotinho",
       "sabor": "Nutella",
       "observacao": "Sem mussarela",
-      "status": "Solicitado",
+      "status": "Em produção",
       "id": 2
     },
     {
@@ -100,7 +92,7 @@
       "tamanho": "Brotinho",
       "sabor": "Carne Seca",
       "observacao": "",
-      "status": "Solicitado",
+      "status": "Em produção",
       "id": 3
     },
     {
@@ -108,7 +100,7 @@
       "tamanho": "Maracanã",
       "sabor": "4 Queijos",
       "observacao": "Sem gorgonzola",
-      "status": "Solicitado",
+      "status": "Em produção",
       "id": 4
     },
     {
@@ -116,8 +108,16 @@
       "tamanho": "Brotinho",
       "sabor": "Frango com catupiry",
       "observacao": null,
-      "status": "Solicitado",
+      "status": "Finalizado",
       "id": 5
+    },
+    {
+      "name": "Renan Costa",
+      "tamanho": "Brotinho",
+      "sabor": "Nutella",
+      "observacao": "Sem queijo",
+      "status": "Solicitado",
+      "id": 6
     }
   ]
 }

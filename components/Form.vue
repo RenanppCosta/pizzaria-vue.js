@@ -1,5 +1,5 @@
 <template>
-    <Message :msg="msg" v-show="msg"/>
+    <Message :msg="msg" v-show="msg" />
     <div>
         <div id="container_form">
             <form @submit="orderPlaced">

@@ -1,7 +1,7 @@
 <template>
     <div class="main_container">
         <h1>Gerenciar Pedidos</h1>
-        <Dashboard/>
+        <Dashboard />
     </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
-      <Header :logo="logo_src"  :alt="app_name"/>
+      <Header :logo="logo_src"  :alt="app_name" />
       <router-view></router-view>
-      <Footer/>
+      <Footer />
 </template>
 
 <script>

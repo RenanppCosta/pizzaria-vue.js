@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Message :msg="msg" v-show="msg" />
         <table>
             <thead>
                 <tr>
@@ -18,9 +19,9 @@
                     <td>{{pizza.tamanho}}</td>
                     <td>{{pizza.sabor}}</td>
                     <td>{{pizza.observacao}}</td>
-                    <td class="status">
-                        <select name="status" class="status-order">
-                            <option v-for="sts in status"  value="sts.tipo" :key="sts.id" :selected="pizza.status == sts.tipo">{{sts.tipo}}</option>
+                    <td>
+                        <select name="status" class="status-order" @change="updatePizza($event, pizza.id)">
+                            <option v-for="sts in status"  :value="sts.tipo" :key="sts.id" :selected="pizza.status == sts.tipo">{{sts.tipo}}</option>
                         </select>
                         <button @click="deletePizza(pizza.id)">Cancelar</button>
                     </td>
@@ -31,13 +32,16 @@
 </template>
 
 <script>
+import Message from "./Message.vue"
+
 export default {
     name:"Dashboard",
     data(){
         return{
             pizzas: null,
             pizzas_id: null,
-            status: []
+            status: [],
+            msg: null
         }
     },
     methods: {
@@ -64,11 +68,35 @@ export default {
 
             const res = await req.json();
 
+            this.msg = `Pedido removido com sucesso!`;
+            setTimeout(() => this.msg = "", 5000);
+
             this.getPedidos();
+        },
+        async updatePizza(event, id){
+            const option = event.target.value;
+
+            const dataJson = JSON.stringify({status: option});
+
+            const req = await fetch(`http://localhost:3000/pizzas/${id}`, {
+                method: "PATCH",
+                headers: {"Content-Type": "application/json"},
+                body: dataJson
+            });
+
+            const res = await req.json();
+
+            this.msg = `O pedido ${res.id} foi atualizado para ${res.status} com sucesso!`;
+            setTimeout(() => this.msg = "", 5000);
+
+            console.log(res)
         }
     },
     mounted(){
         this.getPedidos()
+    },
+    components:{
+        Message
     }
 }
 </script>
@@ -114,4 +142,33 @@ export default {
         padding: 0.5rem;
     }
 
+    @media(max-width:1150px){
+        th, td{
+        padding: 1rem 0.5rem;
+    }
+
+    select{
+        padding: 0.2rem;
+    }
+
+    button{
+        padding: 0.3rem;
+    }
+    }
+
+    @media(max-width:550px){
+        th, td{
+        font-size: 12px;
+        padding: 0.2rem;
+    }
+
+    button{
+        font-size: 12px;
+    }
+
+    select{
+        font-size: 12px;
+        padding: 0;
+    }
+    }
 </style>
