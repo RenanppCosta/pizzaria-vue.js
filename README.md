@@ -28,7 +28,6 @@ Após instaladas as dependências, dê o comando seguinte para rodar a aplicaç�
 <npm run dev> e 
 <npm run backend>
 ```
-```
 
 ## :handshake: Colaboradores
 <table>
